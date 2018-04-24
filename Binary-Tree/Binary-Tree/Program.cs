@@ -10,6 +10,11 @@ namespace Binary_Tree
     {
         static void Main(string[] args)
         {
+            Node<int> node1 = new Node<int>(0);
+            node1.AddChild(1, node1.rChildNode); //Añadir hijo derecho
+            Console.WriteLine(node1.information);
+            Console.WriteLine(node1.rChildNode.information);//ver padre del hijo
+            Console.ReadKey();
         }
     }
 }
