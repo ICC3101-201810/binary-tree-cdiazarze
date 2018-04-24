@@ -8,7 +8,7 @@ namespace Binary_Tree
 {
     class Node<T>
     {
-        private T information { get; set; }
+        private T information { get; }
         private Node<T> parentNode { get;}
         private Node<T> rChildNode { get; set; }
         private Node<T> lChildNode { get; set; }
@@ -46,7 +46,7 @@ namespace Binary_Tree
             {
                 rChildNode = new Node<T>(information, this);
             }
-            catch { }
+            catch { throw; }
         }
         public void AddLeftChild(T information)
         {
@@ -54,7 +54,7 @@ namespace Binary_Tree
             {
                 lChildNode = new Node<T>(information, this);
             }
-            catch { }
+            catch { throw; }
         }
         public Node<T> GetRChild()
         {
@@ -92,7 +92,10 @@ namespace Binary_Tree
                 return this;
             }
         }
-
+        public void Remove()
+        {
+            
+        }
     }
 
 }
