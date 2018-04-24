@@ -8,10 +8,10 @@ namespace Binary_Tree
 {
     class Node<T>
     {
-        public T information { get; set; }
-        public Node<T> parentNode {get;}
-        public Node<T> rChildNode {get;}
-        public Node<T> lChildNode {get;}
+        private T information { get; set; }
+        private Node<T> parentNode { get;}
+        private Node<T> rChildNode { get; set; }
+        private Node<T> lChildNode { get; set; }
 
         public Node(T information)
         {
@@ -27,9 +27,70 @@ namespace Binary_Tree
             lChildNode = null;
         }
 
-        public void AddChild(T information, Node<T> node)
+        public T GetInformation()
         {
-            node = new Node<T>(information,this);
+            try
+            {
+                return this.information;
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public void AddRightChild(T information)
+        {
+            try
+            {
+                rChildNode = new Node<T>(information, this);
+            }
+            catch { }
+        }
+        public void AddLeftChild(T information)
+        {
+            try
+            {
+                lChildNode = new Node<T>(information, this);
+            }
+            catch { }
+        }
+        public Node<T> GetRChild()
+        {
+            try
+            {
+                return rChildNode;
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("No tiene hijo derecho");
+                return this;
+            }
+        }
+        public Node<T> GetLChild()
+        {
+            try
+            {
+                return lChildNode;
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("No tiene hijo Izquierdo");
+                return this;
+            }
+        }
+        public Node<T> GetParent()
+        {
+            try
+            {
+                return parentNode;
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("No tiene padre");
+                return this;
+            }
         }
 
     }
